@@ -14,7 +14,7 @@
 <body>
   <!-- v2: testids renamed, "Delete" became "Remove", row ids replaced by data-id -->
   <h1>Team members</h1>
-  <input type="search" placeholder="Search members" oninput="document.getElementById('query').textContent = this.value">
+  <input type="search" placeholder="Search people" oninput="document.getElementById('query').textContent = this.value">
   <p>Query: <span id="query"></span></p>
 
   <table>
@@ -25,7 +25,7 @@
   <p id="editing"></p>
 
   <button onclick="document.querySelector('tr[data-id=\'3\']').remove(); toast('User removed')">Remove</button>
-  <button data-testid="save-button" onclick="toast('Settings saved')">Save changes</button>
+  <button data-testid="settings-save" onclick="toast('Settings saved')">Save changes</button>
   <button onclick="toast('Cancelled')">Cancel</button>
   <p id="toast" role="status"></p>
 

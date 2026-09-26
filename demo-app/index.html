@@ -16,7 +16,7 @@
   <!-- v2 redesign: ids/classes renamed, wrappers added. Tests still target v1 markup. -->
   <nav>
     <a href="#home">Home</a>
-    <div class="nav-right"><a href="#cart" class="nav-link--cart">Cart (0)</a></div>
+    <div class="nav-right"><a href="#cart" class="nav__cart">Cart (0)</a></div>
   </nav>
 
   <h1>Checkout</h1>
@@ -24,12 +24,12 @@
     <input class="field--email" type="email" name="email" placeholder="Email address" required>
     <input class="field--promo" type="text" name="promo" placeholder="Promo code">
     <button type="button" class="secondary" onclick="document.getElementById('status').textContent = 'Thanks for the feedback';">Submit feedback</button>
-    <div class="actions"><button id="place-order" type="submit">Submit order</button></div>
+    <div class="actions"><button id="checkout-submit" type="submit">Place order</button></div>
   </form>
   <p id="status" role="status"></p>
 
   <script>
-    document.querySelector('.nav-link--cart').addEventListener('click', () => {
+    document.querySelector('.nav__cart').addEventListener('click', () => {
       document.querySelector('h1').textContent = 'Your cart';
     });
   </script>
