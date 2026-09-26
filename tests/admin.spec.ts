@@ -3,7 +3,7 @@ import { test, expect } from './fixture';
 test.beforeEach(async ({ page }) => { await page.goto('/admin.html'); });
 
 test('saves settings', async ({ page }) => {
-  await page.getByTestId('save-button').click();
+  await page.getByTestId('settings-save').click();
   await expect(page.locator('#toast')).toHaveText('Settings saved');
 });
 
@@ -18,6 +18,6 @@ test('edits the second user', async ({ page }) => {
 });
 
 test('searches members', async ({ page }) => {
-  await page.getByPlaceholder('Search members').fill('beta');
+  await page.getByPlaceholder('Search people').fill('beta');
   await expect(page.locator('#query')).toHaveText('beta');
 });
