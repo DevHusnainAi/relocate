@@ -1,0 +1,41 @@
+Relocate install commit: install Relocate (capture fixture + CLI)
+
+ .gitignore           |  2 ++
+ playwright.config.ts |  6 +++---
+ tests/fixture.ts     | 15 +++++++++++++++
+ tests/spa.spec.ts    |  2 +-
+ 4 files changed, 21 insertions(+), 4 deletions(-)
+commit 5421991cb45f16e973d4a995cb9fe4336cf74674
+Author: DevHusnainAi <syedhussnaintirmizi@gmail.com>
+Date:   Sat Sep 26 18:39:41 2026 +0500
+
+    install Relocate (capture fixture + CLI)
+
+diff --git a/playwright.config.ts b/playwright.config.ts
+index 73c385a..708a89b 100644
+--- a/playwright.config.ts
++++ b/playwright.config.ts
+@@ -4,10 +4,10 @@ export default defineConfig({
+   testDir: 'tests',
+   timeout: 30_000,
+   // ponytail: short action timeout so a stale locator fails in 3s, not 30s (demo budget is 110s)
+-  use: { baseURL: 'http://127.0.0.1:4178', actionTimeout: 3_000 },
++  use: { baseURL: 'http://127.0.0.1:4173', actionTimeout: 3_000 },
+   webServer: {
+-    command: 'python3 -m http.server 4178 -d demo-app',
+-    url: 'http://127.0.0.1:4178',
++    command: 'python3 -m http.server 4173 -d demo-app',
++    url: 'http://127.0.0.1:4173',
+     reuseExistingServer: true,
+   },
+ });
+diff --git a/tests/spa.spec.ts b/tests/spa.spec.ts
+index 17376e3..e3dbffd 100644
+--- a/tests/spa.spec.ts
++++ b/tests/spa.spec.ts
+@@ -1,4 +1,4 @@
+-import { test, expect } from '@playwright/test';
++import { test, expect } from './fixture';
+ 
+ test.beforeEach(async ({ page }) => { await page.goto('/spa/'); });
+ 

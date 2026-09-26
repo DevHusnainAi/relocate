@@ -1,0 +1,37 @@
+diff --git a/tests/spa.spec.ts b/tests/spa.spec.ts
+index e3dbffd..e30bbe6 100644
+--- a/tests/spa.spec.ts
++++ b/tests/spa.spec.ts
+@@ -3,27 +3,27 @@ import { test, expect } from './fixture';
+ test.beforeEach(async ({ page }) => { await page.goto('/spa/'); });
+ 
+ test('saves team settings', async ({ page }) => {
+-  await page.locator('button._primary_DzAMk').click();
++  await page.getByRole('button', { name: 'Save changes' }).click();
+   await expect(page.locator('#toast')).toHaveText('Settings saved');
+ });
+ 
+ test('removes the last member', async ({ page }) => {
+-  await page.getByRole('button', { name: 'Delete member' }).click();
++  await page.getByRole('button', { name: 'Remove from team' }).click();
+   await expect(page.locator('#toast')).toHaveText('Member removed');
+ });
+ 
+ test('sends an invite', async ({ page }) => {
+   await page.locator('input[type=email]').fill('new@acme.io');
+-  await page.getByTestId('invite-submit').click();
++  await page.getByTestId('invite-form-send').click();
+   await expect(page.locator('#toast')).toHaveText('Invite sent');
+ });
+ 
+ test('edits the second member', async ({ page }) => {
+-  await page.locator('#member-2 .edit').click();
++  await page.locator('li').filter({ hasText: 'Beta' }).getByRole('button', { name: 'Edit' }).click();
+   await expect(page.locator('#editing')).toHaveText('Editing Beta');
+ });
+ 
+ test('filters members', async ({ page }) => {
+-  await page.getByPlaceholder('Search members').fill('bet');
++  await page.getByPlaceholder('Find a teammate').fill('bet');
+   await expect(page.locator('#query')).toHaveText('bet');
+ });

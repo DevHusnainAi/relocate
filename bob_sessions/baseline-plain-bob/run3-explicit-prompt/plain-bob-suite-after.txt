@@ -1,0 +1,29 @@
+npm notice run npx
+npm notice run 'playwright' test --reporter=line
+[WebServer] 127.0.0.1 - - [26/Sep/2026 17:58:00] "GET / HTTP/1.1" 200 -
+
+
+Running 7 tests using 4 workers
+
+[1/7] tests/checkout.spec.ts:3:1 › checkout places an order
+[2/7] tests/promo.spec.ts:3:1 › promo code is accepted
+[3/7] tests/nav.spec.ts:3:1 › cart link opens the cart
+[4/7] tests/admin.spec.ts:5:1 › saves settings
+[WebServer] 127.0.0.1 - - [26/Sep/2026 17:58:01] "GET / HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 17:58:01] "GET / HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 17:58:01] "GET /admin.html HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 17:58:01] "GET / HTTP/1.1" 200 -
+
+[5/7] tests/admin.spec.ts:10:1 › deletes the last user
+[WebServer] 127.0.0.1 - - [26/Sep/2026 17:58:01] "GET /admin.html HTTP/1.1" 200 -
+
+[6/7] tests/admin.spec.ts:15:1 › edits the second user
+[WebServer] 127.0.0.1 - - [26/Sep/2026 17:58:01] "GET /admin.html HTTP/1.1" 200 -
+
+[7/7] tests/admin.spec.ts:20:1 › searches members
+[WebServer] 127.0.0.1 - - [26/Sep/2026 17:58:01] "GET /admin.html HTTP/1.1" 200 -
+
+  7 passed (1.5s)

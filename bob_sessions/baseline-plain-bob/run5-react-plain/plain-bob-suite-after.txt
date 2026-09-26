@@ -1,0 +1,43 @@
+npm notice run npx
+npm notice run 'playwright' test --reporter=line
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:09] "GET / HTTP/1.1" 200 -
+
+
+Running 5 tests using 1 worker
+
+[1/5] tests/spa.spec.ts:5:1 › saves team settings
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:09] "GET /spa/ HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:09] "GET /spa/assets/index-DdUWJKIR.js HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:09] "GET /spa/assets/index-509VThTO.css HTTP/1.1" 200 -
+
+[2/5] tests/spa.spec.ts:10:1 › removes the last member
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:09] "GET /spa/ HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:09] "GET /spa/assets/index-509VThTO.css HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:09] "GET /spa/assets/index-DdUWJKIR.js HTTP/1.1" 200 -
+
+[3/5] tests/spa.spec.ts:15:1 › sends an invite
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:10] "GET /spa/ HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:10] "GET /spa/assets/index-509VThTO.css HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:10] "GET /spa/assets/index-DdUWJKIR.js HTTP/1.1" 200 -
+
+[4/5] tests/spa.spec.ts:21:1 › edits the second member
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:10] "GET /spa/ HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:10] "GET /spa/assets/index-DdUWJKIR.js HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:10] "GET /spa/assets/index-509VThTO.css HTTP/1.1" 200 -
+
+[5/5] tests/spa.spec.ts:26:1 › filters members
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:10] "GET /spa/ HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:10] "GET /spa/assets/index-509VThTO.css HTTP/1.1" 200 -
+
+[WebServer] 127.0.0.1 - - [26/Sep/2026 18:30:10] "GET /spa/assets/index-DdUWJKIR.js HTTP/1.1" 200 -
+
+  5 passed (1.5s)

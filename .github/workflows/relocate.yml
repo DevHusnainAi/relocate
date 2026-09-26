@@ -1,0 +1,46 @@
+# A redesign PR turns E2E red -> Relocate heals the stale locators and opens a heal PR into that branch.
+name: Relocate
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  e2e:
+    # PRs opened by Relocate itself don't trigger workflows (GITHUB_TOKEN), but skip its branches anyway.
+    if: ${{ !startsWith(github.head_ref, 'relocate/heal-') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      - name: E2E suite
+        id: e2e
+        continue-on-error: true
+        run: npx playwright test
+
+      - name: Relocate heal
+        if: steps.e2e.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name DevHusnainAi
+          git config user.email syedhussnaintirmizi@gmail.com
+          node relocate.ts heal --pr --base "${{ github.head_ref || github.ref_name }}"
+
+      - uses: actions/upload-artifact@v4
+        if: steps.e2e.outcome == 'failure'
+        with:
+          name: relocate-proof
+          path: relocate-proof/

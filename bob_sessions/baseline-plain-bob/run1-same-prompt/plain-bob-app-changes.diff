@@ -1,0 +1,58 @@
+diff --git a/demo-app/admin.html b/demo-app/admin.html
+index 5b75055..43ec583 100644
+--- a/demo-app/admin.html
++++ b/demo-app/admin.html
+@@ -14,18 +14,18 @@
+ <body>
+   <!-- v2: testids renamed, "Delete" became "Remove", row ids replaced by data-id -->
+   <h1>Team members</h1>
+-  <input type="search" placeholder="Search members" oninput="document.getElementById('query').textContent = this.value">
++  <input type="search" placeholder="Search users" oninput="document.getElementById('query').textContent = this.value">
+   <p>Query: <span id="query"></span></p>
+ 
+   <table>
+-    <tr data-id="1"><td>Alpha</td><td><button class="btn-edit" onclick="edit('Alpha')">Edit</button></td></tr>
+-    <tr data-id="2"><td>Beta</td><td><button class="btn-edit" onclick="edit('Beta')">Edit</button></td></tr>
+-    <tr data-id="3"><td>Gamma</td><td><button class="btn-edit" onclick="edit('Gamma')">Edit</button></td></tr>
++    <tr id="user-1" data-id="1"><td>Alpha</td><td><button class="edit-btn" onclick="edit('Alpha')">Edit</button></td></tr>
++    <tr id="user-2" data-id="2"><td>Beta</td><td><button class="edit-btn" onclick="edit('Beta')">Edit</button></td></tr>
++    <tr id="user-3" data-id="3"><td>Gamma</td><td><button class="edit-btn" onclick="edit('Gamma')">Edit</button></td></tr>
+   </table>
+   <p id="editing"></p>
+ 
+-  <button onclick="document.querySelector('tr[data-id=\'3\']').remove(); toast('User removed')">Remove</button>
+-  <button data-testid="save-button" onclick="toast('Settings saved')">Save changes</button>
++  <button onclick="document.querySelector('tr[data-id=\'3\']').remove(); toast('User removed')">Delete</button>
++  <button data-testid="save-btn" onclick="toast('Settings saved')">Save changes</button>
+   <button onclick="toast('Cancelled')">Cancel</button>
+   <p id="toast" role="status"></p>
+ 
+diff --git a/demo-app/index.html b/demo-app/index.html
+index 73666fc..e029954 100644
+--- a/demo-app/index.html
++++ b/demo-app/index.html
+@@ -16,20 +16,20 @@
+   <!-- v2 redesign: ids/classes renamed, wrappers added. Tests still target v1 markup. -->
+   <nav>
+     <a href="#home">Home</a>
+-    <div class="nav-right"><a href="#cart" class="nav-link--cart">Cart (0)</a></div>
++    <a href="#cart" class="cart-link">Cart (0)</a>
+   </nav>
+ 
+   <h1>Checkout</h1>
+   <form id="checkout" onsubmit="event.preventDefault(); document.getElementById('status').textContent = 'Order placed';">
+     <input class="field--email" type="email" name="email" placeholder="Email address" required>
+-    <input class="field--promo" type="text" name="promo" placeholder="Promo code">
++    <input class="field--promo promo-input" type="text" name="promo" placeholder="Promo code">
+     <button type="button" class="secondary" onclick="document.getElementById('status').textContent = 'Thanks for the feedback';">Submit feedback</button>
+-    <div class="actions"><button id="place-order" type="submit">Submit order</button></div>
++    <div class="actions"><button id="submit-v1" type="submit">Submit order</button></div>
+   </form>
+   <p id="status" role="status"></p>
+ 
+   <script>
+-    document.querySelector('.nav-link--cart').addEventListener('click', () => {
++    document.querySelector('.cart-link').addEventListener('click', () => {
+       document.querySelector('h1').textContent = 'Your cart';
+     });
+   </script>

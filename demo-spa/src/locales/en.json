@@ -1,0 +1,14 @@
+{
+  "title": "Team settings",
+  "settings.heading": "Workspace",
+  "settings.save": "Save changes",
+  "members.heading": "Members",
+  "members.search": "Find a teammate",
+  "members.edit": "Edit",
+  "members.remove": "Remove from team",
+  "invite.heading": "Invite",
+  "invite.send": "Send invite",
+  "toast.saved": "Settings saved",
+  "toast.removed": "Member removed",
+  "toast.invited": "Invite sent"
+}

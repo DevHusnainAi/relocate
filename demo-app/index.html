@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Acme Shop</title>
+  <style>
+    body { font: 16px system-ui; max-width: 560px; margin: 40px auto; }
+    nav { display: flex; gap: 16px; margin-bottom: 24px; }
+    form { display: grid; gap: 12px; }
+    input, button { padding: 10px; font: inherit; }
+    button { background: #0f62fe; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+    button.secondary { background: #6f6f6f; }
+  </style>
+</head>
+<body>
+  <!-- v2 redesign: ids/classes renamed, wrappers added. Tests still target v1 markup. -->
+  <nav>
+    <a href="#home">Home</a>
+    <div class="nav-right"><a href="#cart" class="nav-link--cart">Cart (0)</a></div>
+  </nav>
+
+  <h1>Checkout</h1>
+  <form id="checkout" onsubmit="event.preventDefault(); document.getElementById('status').textContent = 'Order placed';">
+    <input class="field--email" type="email" name="email" placeholder="Email address" required>
+    <input class="field--promo" type="text" name="promo" placeholder="Promo code">
+    <button type="button" class="secondary" onclick="document.getElementById('status').textContent = 'Thanks for the feedback';">Submit feedback</button>
+    <div class="actions"><button id="place-order" type="submit">Submit order</button></div>
+  </form>
+  <p id="status" role="status"></p>
+
+  <script>
+    document.querySelector('.nav-link--cart').addEventListener('click', () => {
+      document.querySelector('h1').textContent = 'Your cart';
+    });
+  </script>
+</body>
+</html>
